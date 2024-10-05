@@ -1,6 +1,6 @@
 --[[
 НАЗВАНИЕ
-    Morning_sale_V132
+    Morning_sale_V133
 
 ОПИСАНИЕ
     Данный скрипт представляет из себя торгового робота на платформе QUIK
@@ -33,7 +33,7 @@
 ------------------------------------------------- Инициализируем глобальные переменные --------------------------
 local account = ""                         -- основной счет
 local client_code = ""                     -- код клиента
-local script_name = "Morning_sale_V1"      -- название скрипта
+local script_name = "Morning_sale_V133"    -- название скрипта
 local is_running = true                    -- флаг, указывающий работает ли скрипт
 local is_stopped = false                   -- флаг, указывающий остановлен ли скрипт
 local row_new_instrument = 0               -- номер строки в таблице, где новый инструмент
@@ -2101,7 +2101,7 @@ function OpenPrice(class, sec)
 	
 	local bar_time = {}
 	local bar_hour = 0
-	for i = 0, (hour + 2) do
+	for i = 0, 24  do -- (hour + 2)
 		bar_time = ds:T(Size-i)
 		bar_hour = tonumber(bar_time.hour)
 		O = ds:O(Size-i)
@@ -2113,4 +2113,5 @@ function OpenPrice(class, sec)
 		end
 	end
 	ds:Close() -- Удаляет источник данных, отписывается от получения данных
+	return nil
 end
